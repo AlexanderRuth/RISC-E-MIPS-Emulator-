@@ -1,0 +1,45 @@
+#	primes.txt
+#
+#	Written by Alex Ruth for the 2020 OLC Code Jam
+#
+#	Computes the primes up to 1000 via brute force
+#
+
+.data
+
+star: .asciiz "*"
+height: .word 50
+newline: .byte 10
+
+.text
+
+addi $a0, $zero, star
+addi $v0, $zero, 3	#$v0 = 3 (print string)
+
+lw $t0, height($0)	#Get triangle height
+ori $t1, $t1, 0		#Number of columns
+
+row:
+
+    addi $a0, $zero, star
+
+    #if $t0 == 0, finished
+    blez $t0, done
+
+    addi $t0, $t0, -1
+    addi $t1, $t1, 1
+    addi $t2, $t1, 0	#$t2 = $t1
+
+    col:
+	addi $t2, $t2, -1
+	syscall
+	bgtz $t2, col
+
+        # print newline
+        addi $a0, $zero, newline
+        syscall
+
+	j row
+
+done:
+        

@@ -1,0 +1,49 @@
+#	primes.txt
+#
+#	Written by Alex Ruth for the 2020 OLC Code Jam
+#
+#	Computes the primes up to 1000 via brute force
+#
+
+.data
+
+number: .word 42
+sentence: .asciiz "Hello There"
+non_null_terminated: .ascii "I'm not null terminated :D"
+number2: .word 12012
+
+.text
+
+ori $t0, $t0, 1		#Start with 2
+ori $t3, $t3, 1000	#Go up to 1000
+ori $v0, $v0, 1		#Number for the print syscall ($v0 = 1)
+
+start: 
+
+#Reset the divisor to start at 2
+ori $t1, $zero, 0
+ori $t1, $t1, 2 
+addi $t0, $t0, 1
+
+sub $t2, $t3, $t0
+blez $t2, done
+
+loop: 
+
+# Check if denominator >= divisor. If so, the number is prime!
+sub $t2, $t0, $t1
+blez $t2, is_prime
+
+div $t0, $t1		#Compute current num / current denominator
+mfhi $t2		#Get the remainder
+blez $t2, start		#If the remainder equals 0, not a prime
+addi $t1, $t1, 1	#Try the next divisor
+j loop
+
+is_prime: 
+
+add $a0, $zero, $t0
+syscall
+j start
+
+done:
