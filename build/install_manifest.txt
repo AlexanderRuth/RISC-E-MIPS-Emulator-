@@ -1,8 +1,0 @@
-/home/alex/MIPSEmulator/build/./RISC-E/./MIPSEmulator
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/function_call.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/memory.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/primes.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/rock_paper_scissors.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/rock_paper_scissors_same_seed.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/string_input.txt
-/home/alex/MIPSEmulator/build/./RISC-E/./examples/triangle.txt
