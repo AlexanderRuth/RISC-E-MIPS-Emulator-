@@ -1,6 +1,8 @@
 ### RISC-E (Reduced Instruction Set Computer Emulator) MIPS Emulator
 
-Created for the OLC Code Jam 2020
+Created for the OLC Code Jam 2020 (The Great Machine)
+
+What greater machine is there than the modern CPU? (Probably robots or something...)
 
 ## Building
 
@@ -54,3 +56,71 @@ On Windows:
 ```
 MIPSEmulator.exe examples/primes.txt
 ```
+
+## Supported Operations
+
+All Arithmetic, Logical, and Branching Instructions are supported.
+
+add
+addi
+addiu
+addu
+and
+andi
+beq
+bgtz
+blez
+bne
+div
+divu
+j
+jal
+jalr
+jr
+lb
+lbu
+lh
+lhu
+lui
+lw
+mfhi
+mflo
+mthi
+mtlo
+mult
+multu
+nor
+or
+ori
+sb
+sh
+sll
+sllv
+slt
+slti
+sltiu
+sltu
+sra
+srav
+srl
+srlv
+sub
+subu
+sw
+syscall
+xor
+xori
+
+Additionally, the following system calls are provided:
+
+The system call number is provided via $v0:
+
+1:    print integer contained in register $a0
+2:    read integer and place result into $a0
+3:    print string whose memory address is at $a0
+4:    read string of size $a1 and place memory at $a0
+5:    read character and store result in $v0
+6:    print character in $a0
+7:    generate random integer and store in $v0
+8:    set RNG seed based on value in $a0
+9:    flush input buffer
