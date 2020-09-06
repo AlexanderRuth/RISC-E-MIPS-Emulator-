@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/CPU.h
+cstdint
+-
+string
+-
+vector
+-
+map
+-
+sstream
+-
+functional
+-
+
+/home/alex/MIPSEmulator/src/Driver.cpp
+CPU.h
+/home/alex/MIPSEmulator/src/CPU.h
+iostream
+-
+

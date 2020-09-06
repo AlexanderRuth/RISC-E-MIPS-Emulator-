@@ -1,0 +1,68 @@
+#	
+#	function_call.txt
+#
+#	Written by Alex Ruth for the 2020 OLC Code Jam
+#
+#	Test function calls (via jalr, jr, etc.)
+#
+
+.data
+
+msg:	 .asciiz "Calling get_single_digit_integer()"
+msg2:	 .asciiz "Result: "
+newline: .byte 10
+
+get_input: .asciiz "Enter single digit number: "
+
+.text
+
+ori $a0, $zero, msg
+jal print_string
+
+jal get_single_digit_integer
+
+add $t0, $zero, $a0	#Store $a0 in $t0
+
+ori $a0, $zero, msg2
+ori $v0, $zero, 3
+
+syscall
+
+add $a0, $zero, $t0
+ori $v0, $zero, 1
+
+syscall
+
+j done
+
+#Print string + newline
+print_string:
+
+   ori $v0, $zero, 3
+   syscall
+
+   lb $a0, newline($zero)
+   ori $v0, $zero, 6
+   syscall
+
+   jr $ra
+
+#Store result in $a0
+get_single_digit_integer:
+
+    ori $a0, $zero, get_input
+    ori $v0, $zero, 3
+
+    syscall
+
+    ori $v0, $zero, 5		#Read character
+    syscall
+    
+    addi $a0, $v0, -48
+
+    ori $v0, $zero, 9		#Flush buffer
+    syscall
+
+    jr $ra
+
+done:

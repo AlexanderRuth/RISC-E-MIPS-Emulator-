@@ -1,0 +1,42 @@
+#	
+#	string_input.txt
+#
+#	Written by Alex Ruth for the 2020 OLC Code Jam
+#
+#	Test string I/O via system calls
+#
+
+.data
+
+msg:      .asciiz "Enter a string: "
+msg2:     .asciiz "What you entered: "
+
+input:	 .space 100		#100 bytes of buffer
+
+.text
+
+ori $a0, $zero, msg
+ori $v0, $zero, 3
+
+syscall
+
+ori $a1, $zero, 100		#Buffer size
+ori $a0, $zero, input		#Place string here
+
+ori $v0, $zero, 4		#Read string system call
+
+syscall
+
+ori $a0, $zero, msg2
+ori $v0, $zero, 3
+
+syscall
+
+ori $a0, $zero, input
+
+syscall				#Print what was entered
+
+ori $a0, $zero, 10		#Newline character
+ori $v0, $zero, 6		#Print character system call
+
+syscall
